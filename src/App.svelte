@@ -4,6 +4,7 @@
     let beltColor: String = 'black';
 
     $: fullName = `${firstName} ${lastName}`;
+    $: console.log(beltColor)
 
     const handleClick = () => {
         beltColor = 'orange';
