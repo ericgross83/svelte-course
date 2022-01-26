@@ -1,5 +1,6 @@
 <script>
-	let name = 'Yoshi';
+	let firstName = 'Jimi';
+	let lastName = 'Hendrix';
 	let beltColor = 'black'
 	const handleClick = () => {
 	    beltColor = 'orange'
@@ -11,10 +12,9 @@
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p style="color: {beltColor}">{beltColor} belt</p>
-	<button on:click={handleClick}>Update belt colour</button>
-<!--	<input type="text" on:input={(e) => handeChangeEvent(e)} value="{beltColor}">-->
+	<p>{beltColor} belt</p>
+	<input type="text" bind:value={firstName}>
+	<input type="text" bind:value={lastName}>
 	<input type="text" bind:value={beltColor}>
 </main>
 
