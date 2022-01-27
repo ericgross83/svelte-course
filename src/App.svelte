@@ -1,25 +1,8 @@
 <script >
-    let firstName = 'Jimi';
-    let lastName = 'Hendrix';
-    let beltColor: String = 'black';
-
-    $: fullName = `${firstName} ${lastName}`;
-    $: console.log(beltColor)
-
-    const handleClick = () => {
-        beltColor = 'orange';
-    };
-
-    const handeChangeEvent = (e) => {
-        beltColor = e.target.value;
-    };
 </script>
 
 <main>
-    <p>{fullName} {beltColor} belt</p>
-    <input type="text" bind:value={firstName}>
-    <input type="text" bind:value={lastName}>
-    <input type="text" bind:value={beltColor}>
+
 </main>
 
 <style>
