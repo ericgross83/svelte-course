@@ -1,4 +1,9 @@
 <script >
+    const people = [
+        {name: 'yoshi', beltColour: 'black', age: 25, id: 1},
+        {name: 'mario', beltColour: 'orange', age: 45, id: 2},
+        {name: 'luigi', beltColour: 'brown', age: 35, id: 3},
+    ]
 </script>
 
 <main>
