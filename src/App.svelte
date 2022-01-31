@@ -1,26 +1,19 @@
 <script>
     import Modal from './Modal.svelte';
+
     let people = [
         { name: 'yoshi', beltColour: 'black', age: 25, id: 1 },
         { name: 'mario', beltColour: 'orange', age: 45, id: 2 },
-        { name: 'luigi', beltColour: 'brown', age: 35, id: 3 },
+        { name: 'luigi', beltColour: 'brown', age: 35, id: 3 }
     ];
-    const handleClick = (id) => {
+
+    const handleClick = (e, id) => {
         people = people.filter(person => person.id !== id);
+        console.log(e);
     };
-    let num = 15;
 </script>
 
-
 <Modal />
-{#if num > 20}
-    <p>Greater than 20</p>
-{:else if num > 5}
-    <p>greater than 5</p>
-{:else }
-    <p>Not greater than 5</p>
-{/if}
-
 <main>
     {#each people as person (person.id)}
         <div>
@@ -29,12 +22,11 @@
                 <p><strong>MASTER NINJA</strong></p>
             {/if}
             <p>{person.age} years old, {person.beltColour} belt.</p>
-            <button on:click="{() => handleClick(person.id)}">Delete</button>
+            <button on:click={(e) => handleClick(e, person.id)}>delete</button>
         </div>
-    {:else }
-        <p>There are nor people to show...</p>
+    {:else}
+        <p>There are no people to show...</p>
     {/each}
-
 </main>
 
 <style>
@@ -43,13 +35,6 @@
         padding: 1em;
         max-width: 240px;
         margin: 0 auto;
-    }
-
-    h1 {
-        color: #ff3e00;
-        text-transform: uppercase;
-        font-size: 4em;
-        font-weight: 100;
     }
 
     @media (min-width: 640px) {
