@@ -20,7 +20,7 @@
 
 <Modal message="Hey, I am a prop value" {showModal} on:click={toggleModal} />
 <main>
-    <button on:click={toggleModal}>Show Modal</button>
+    <button on:click|once={toggleModal}>Show Modal</button>
     {#each people as person (person.id)}
         <div>
             <h4>{person.name}</h4>
