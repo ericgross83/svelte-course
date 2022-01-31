@@ -1,20 +1,26 @@
 <script>
     import Modal from './Modal.svelte';
-
+    let showModal = false;
     let people = [
         { name: 'yoshi', beltColour: 'black', age: 25, id: 1 },
         { name: 'mario', beltColour: 'orange', age: 45, id: 2 },
         { name: 'luigi', beltColour: 'brown', age: 35, id: 3 }
     ];
 
+    console.log(showModal);
     const handleClick = (e, id) => {
         people = people.filter(person => person.id !== id);
         console.log(e);
     };
+    const toggleModal = () => {
+        showModal = !showModal;
+        console.log(showModal);
+    };
 </script>
 
-<Modal message="Hey, I am a prop value" isPromo={true} />
+<Modal message="Hey, I am a prop value" {showModal} on:click={toggleModal} />
 <main>
+    <button on:click={toggleModal}>Show Modal</button>
     {#each people as person (person.id)}
         <div>
             <h4>{person.name}</h4>
