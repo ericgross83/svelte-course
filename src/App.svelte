@@ -17,10 +17,15 @@
         showModal = !showModal;
         console.log(showModal);
     };
+    const addPerson = (event) => {
+        const person = event.detail;
+        people = [person, ...people];
+        showModal = false;
+    };
 </script>
 
 <Modal {showModal} on:click={toggleModal}>
-    <AddPersonForm />
+    <AddPersonForm on:addPerson={addPerson} />
 </Modal>
 <main>
     <button on:click|once={toggleModal}>Show Modal</button>
