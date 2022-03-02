@@ -1,28 +1,29 @@
 <script>
-    import Header from "./components/Header.svelte";
-    import Footer from "./components/Footer.svelte";
-    import Tabs from "./shared/Tabs.svelte";
+  import Header from "./components/Header.svelte";
+  import Footer from "./components/Footer.svelte";
+  import Tabs from "./shared/Tabs.svelte";
+  import CreatePollForm from "./components/CreatePollForm.svelte";
 
-    //    tabs
-    let items = ['Current Polls', 'Add New Poll'];
-    let activeItem = 'Current Polls';
+  //    tabs
+  let items = ["Current Polls", "Add New Poll"];
+  let activeItem = "Add New Poll";
 </script>
 
 <Header />
 <main>
-    <Tabs {items} {activeItem} on:tabSelected={(e) => activeItem = e.detail} />
-    {#if activeItem === 'Current Polls'}
-        <p>Poll list component goes here</p>
-    {:else if activeItem === 'Add New Poll'}
-        <p>New Poll form Component goes here</p>
-    {/if}
-
+  <Tabs {items} {activeItem} on:tabSelected={(e) => (activeItem = e.detail)} />
+  {#if activeItem === "Current Polls"}
+    <p>Poll list component goes here</p>
+  {:else if activeItem === "Add New Poll"}
+    <CreatePollForm />
+  {/if}
 </main>
 
 <Footer />
+
 <style>
-    main {
-        max-width: 960px;
-        margin: 40px auto;
-    }
+  main {
+    max-width: 960px;
+    margin: 40px auto;
+  }
 </style>
