@@ -1,8 +1,13 @@
 <script>
   import Button from "../shared/Button.svelte";
+  import { createEventDispatcher } from "svelte";
+
+  let dispatch = createEventDispatcher();
+
   let fields = { question: "", answerA: "", answerB: "" };
   let errors = { question: "", answerA: "", answerB: "" };
   let valid = false;
+
   const submitHandler = () => {
     valid = true;
     errors.question = "";
@@ -13,22 +18,24 @@
     if (fields.question.trim().length < 5) {
       valid = false;
       errors.question = "Question must be at least 5 characters long";
-    } 
-    
+    }
+
     // validate anser A
     if (fields.answerA.trim().length < 1) {
       valid = false;
       errors.answerA = "Answer A cannot be empty";
-    } 
-    
+    }
+
     // validate anser B
     if (fields.answerB.trim().length < 1) {
       valid = false;
       errors.answerB = "Answer B cannot be empty";
-    } 
-    
+    }
+
     // add new poll
     if (valid) {
+      const poll = { ...fields, votesA: 0, votesB: 0, id: Math.random() };
+      dispatch("add", poll);
       console.log("valid", fields);
     }
   };
