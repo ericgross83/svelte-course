@@ -1,9 +1,6 @@
 <script>
+  import PollStore from "../stores/PollStore";
   import Card from "../shared/Card.svelte";
-  import { createEventDispatcher } from "svelte";
-
-  const dispatch = createEventDispatcher();
-
   export let poll;
 
   // reactive values
@@ -12,8 +9,18 @@
   $: percentB = Math.floor((100 / totalVotes) * poll.votesB);
 
   const handleVote = (answer, id) => {
-    const vote = { answer, id };
-    dispatch("upvote", vote);
+    PollStore.update((currentPolls) => {
+      let copiedPolls = [...currentPolls];
+      let upvotedPoll = copiedPolls.find((poll) => poll.id == id);
+
+      if (answer === "a") {
+        upvotedPoll.votesA++;
+      }
+      if (answer === "b") {
+        upvotedPoll.votesB++;
+      }
+      return copiedPolls;
+    });
   };
 </script>
 
