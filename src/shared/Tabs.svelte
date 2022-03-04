@@ -7,7 +7,6 @@
     export let activeItem;
     const handleClick = (item) => {
         dispatch('tabSelected', item)
-        console.log(item)
     };
 
 </script>
